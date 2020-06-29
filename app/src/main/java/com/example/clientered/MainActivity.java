@@ -29,12 +29,8 @@ public class MainActivity extends Activity {
     }
     
     
-    // Este método NO se recomienda
+    // Este método bota un error: NetworkOnMainThreadException
     public void getSync(View view) { 	
-    	//Permite acceder a la red desde la thread principal (UI thread)
-//    	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//    	StrictMode.setThreadPolicy(policy);
-    	
     	tv.setText("......");
     	
     	if(!estaConectado()) {
@@ -43,7 +39,6 @@ public class MainActivity extends Activity {
     	}
 		//en el emulador, 10.0.2.2 (10.0.3.2 Genymotion) equivale a localhost (su PC)
 		tv.setText( download("http://10.0.2.2:8080/") );
-
     }
 
     
@@ -58,8 +53,7 @@ public class MainActivity extends Activity {
     	//en el emulador, 10.0.2.2 (10.0.3.2 Genymotion) equivale a localhost (su PC)
     	new ConnectAsync().execute("http://10.0.2.2:8080/");
     }    
-    
-    
+
     private boolean estaConectado() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         return connMgr.getActiveNetworkInfo().isConnected();
