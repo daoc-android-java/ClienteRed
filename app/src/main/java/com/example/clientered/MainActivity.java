@@ -6,6 +6,7 @@ import java.net.URL;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class MainActivity extends Activity {
     		return;
     	}
 		//en el emulador, 10.0.2.2 (10.0.3.2 Genymotion) equivale a localhost (su PC)
-		tv.setText( download("http://10.0.2.2:8080/") );
+		tv.setText( download("http://10.0.2.2:8080/algo?num=" + Math.random()) );
     }
 
     
@@ -51,8 +52,13 @@ public class MainActivity extends Activity {
     		return;
     	}
     	//en el emulador, 10.0.2.2 (10.0.3.2 Genymotion) equivale a localhost (su PC)
-    	new ConnectAsync().execute("http://10.0.2.2:8080/");
-    }    
+    	new ConnectAsync().execute("http://10.0.2.2:8080/algo?num=" + Math.random());
+    }
+
+    public void gotoVolley(View v) {
+    	Intent intent = new Intent(this, VolleyActivity.class);
+    	startActivity(intent);
+	}
 
     private boolean estaConectado() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
