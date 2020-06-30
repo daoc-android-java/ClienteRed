@@ -60,6 +60,11 @@ public class MainActivity extends Activity {
     	startActivity(intent);
 	}
 
+	public void gotoSpring(View v) {
+		Intent intent = new Intent(this, SpringActivity.class);
+		startActivity(intent);
+	}
+
     private boolean estaConectado() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         return connMgr.getActiveNetworkInfo().isConnected();
