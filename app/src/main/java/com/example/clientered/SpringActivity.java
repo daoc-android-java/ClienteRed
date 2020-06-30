@@ -26,7 +26,6 @@ public class SpringActivity extends Activity {
 
         tv = findViewById(R.id.tv);
         rest = new RestTemplate();
-        rest.getMessageConverters().add(new StringHttpMessageConverter());
     }
 
     public void doGet(View view) {
