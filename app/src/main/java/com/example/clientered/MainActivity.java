@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +52,7 @@ public class MainActivity extends Activity {
     	}
     	//en el emulador, 10.0.2.2 (10.0.3.2 Genymotion) equivale a localhost (su PC)
     	new ConnectAsync().execute("http://10.0.2.2:8080/algo?num=" + Math.random());
+		//new ConnectAsync().execute("http://www.example.com");
     }
 
     public void gotoVolley(View v) {
@@ -79,8 +79,8 @@ public class MainActivity extends Activity {
 	        conn.setDoInput(true); 		
 	        conn.connect();
 	        
-	        int buffersize = conn.getContentLength();
-	        byte[] buffer = new byte[buffersize];
+	        //int buffersize = conn.getContentLength();
+	        byte[] buffer = new byte[1024];
 	        
 	        InputStream is = conn.getInputStream();
 	        is.read(buffer);
